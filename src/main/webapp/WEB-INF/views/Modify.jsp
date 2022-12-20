@@ -77,7 +77,7 @@ img {
 					<ul class="image-preview"
 						style="width: 100%; height: 100%; object-fit: cover"></ul>
 
-						<div class="form-group" style="margin-top: 10px;">							
+						<div class="form-group text-center">							
 					<span id="bt"><input type="button" class="upload" onclick="bt1()" value="사진업로드"></span>
 						</div>
 

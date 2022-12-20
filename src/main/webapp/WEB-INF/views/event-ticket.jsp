@@ -36,74 +36,30 @@
 	<div class="overlay"></div>
 	<a href="#0" class="scrollToTop"><i class="fas fa-angle-up"></i></a>
 	<!-- ==========Overlay========== -->
-	<!-- ==========Header-Section========== -->
-	<%@ include file = "header-section.jsp" %>
-	<!-- ==========Header-Section========== -->
-	<!-- ==========Banner-Section========== -->
-	<section
-		class="details-banner event-details-banner hero-area bg_img seat-plan-banner"
-		data-background="./resources/assets/images/banner/banner07.jpg">
-		<div class="container">
-			<div class="details-banner-wrapper">
-				<div class="details-banner-content style-two">
-					<h3 class="title">
-						<span class="d-block">Digital Marketing</span><span
-							class="d-block">Conference -2020</span>
-					</h3>
-					<div class="tags">
-						<span>17 South Sherman Street Astoria, NY 11106</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- ==========Banner-Section========== -->
-	<!-- ==========Page-Title========== -->
-	<section class="page-title bg-one">
-		<div class="container">
-			<div class="page-title-area">
-				<div class="item md-order-1">
-					<a href="#0" class="custom-button back-button"><i
-						class="flaticon-double-right-arrows-angles"></i>back</a>
-				</div>
-				<div class="item date-item">
-					<span class="date">MON, SEP 09 2020</span>
-				</div>
-				<div class="item">
-					<h5 class="title">05:00</h5>
-					<p>Mins Left</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- ==========Page-Title========== -->
+
 	<!-- ==========Event-Section========== -->
 	<div class="event-facility padding-bottom padding-top">
 		<div class="container">
 			<div class="section-header-3">
-				<span class="cate">simple pricing</span>
-				<h2 class="title">make an appointment</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-					do eiusmod tempor ut labore et dolore magna aliqua. Quis ipsum
-					suspendisse ultrices gravida</p>
+				<span class="cate">Event Coupon</span>
+				<h2 class="title">쿠폰을 선택하세요</h2>
+				<p>그림퀴즈 풀고 쿠폰 얻기</p>
 			</div>
 			<div class="row justify-content-center mb-30-none">
 				<div class="col-md-6 col-lg-4 col-sm-10">
 					<div class="ticket--item">
 						<div class="ticket-thumb">
-							<img src="./resources/assets/images/event/ticket/ticket01.png" alt="event">
+							<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/The_Standard_logo.png" alt="event">
 						</div>
 						<div class="ticket-content">
-							<span class="ticket-title">Standard Ticket</span>
+							<span class="ticket-title">Standard 쿠폰</span>
 							<h2 class="amount">
-								<sup>$</sup>49
+								<sup>￦</sup>1000
 							</h2>
 							<ul>
-								<li>Full access to all lectures and workshops</li>
-								<li class="del"><del>Video presentations</del></li>
-								<li class="del"><del>Meet all of our event speakers</del></li>
+								<li>난이도 쉬움</li>
 							</ul>
-							<a href="#0" class="custom-button">book tickets</a>
+							<a id="cp1" class="custom-button">쿠폰 얻으러 가기</a>
 						</div>
 					</div>
 				</div>
@@ -113,38 +69,35 @@
 							<span>hot</span>
 						</div>
 						<div class="ticket-thumb">
-							<img src="./resources/assets/images/event/ticket/ticket02.png" alt="event">
+							<img src="https://www.kindpng.com/picc/m/491-4919441_premium-stamp-psd-tag-special-promotion-png-transparent.png" alt="event" >
 						</div>
 						<div class="ticket-content">
-							<span class="ticket-title">Premium Ticket</span>
+							<span class="ticket-title">Premium 쿠폰</span>
 							<h2 class="amount">
-								<sup>$</sup>79
+								<sup>￦</sup>2000
 							</h2>
 							<ul>
-								<li>Full access to all lectures and workshops</li>
-								<li>Video presentations</li>
-								<li class="del"><del>Meet all of our event speakers</del></li>
+								<li>난이도 보통</li>
 							</ul>
-							<a href="#0" class="custom-button">book tickets</a>
+							<a id="cp2" class="custom-button">쿠폰 얻으러 가기</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-4 col-sm-10">
 					<div class="ticket--item three">
 						<div class="ticket-thumb">
-							<img src="./resources/assets/images/event/ticket/ticket03.png" alt="event">
+							<img src="https://lopezdesign.com/wp-content/uploads/2020/08/VIP-logo-new.jpg" alt="event">
 						</div>
 						<div class="ticket-content">
-							<span class="ticket-title">VIP Ticket</span>
+							<span class="ticket-title">VIP 쿠폰</span>
 							<h2 class="amount">
-								<sup>$</sup>99
+								<sup>￦</sup>5000
 							</h2>
 							<ul>
-								<li>Full access to all lectures and workshops</li>
-								<li>Video presentations</li>
-								<li>Meet all of our event speakers</li>
+								<li>난이도 어려움</li>
+								
 							</ul>
-							<a href="#0" class="custom-button">book tickets</a>
+							<a id="cp3" class="custom-button">쿠폰 얻으러 가기</a>
 						</div>
 					</div>
 				</div>
@@ -152,58 +105,7 @@
 		</div>
 	</div>
 	<!-- ==========Event-Section========== -->
-	<!-- ==========Newslater-Section========== -->
-	<footer class="footer-section">
-		<div class="newslater-section padding-bottom">
-			<div class="container">
-				<div class="newslater-container bg_img"
-					data-background="./resources/assets/images/newslater/newslater-bg01.jpg">
-					<div class="newslater-wrapper">
-						<h5 class="cate">subscribe to Boleto</h5>
-						<h3 class="title">to get exclusive benifits</h3>
-						<form class="newslater-form">
-							<input type="text" placeholder="Your Email Address">
-							<button type="submit">subscribe</button>
-						</form>
-						<p>We respect your privacy, so we never share your info</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="footer-top">
-				<div class="logo">
-					<a href="index-1"><img
-						src="./resources/assets/images/footer/footer-logo.png" alt="footer"></a>
-				</div>
-				<ul class="social-icons">
-					<li><a href="#0"><i class="fab fa-facebook-f"></i></a></li>
-					<li><a href="#0" class="active"><i class="fab fa-twitter"></i></a></li>
-					<li><a href="#0"><i class="fab fa-pinterest-p"></i></a></li>
-					<li><a href="#0"><i class="fab fa-google"></i></a></li>
-					<li><a href="#0"><i class="fab fa-instagram"></i></a></li>
-				</ul>
-			</div>
-			<div class="footer-bottom">
-				<div class="footer-bottom-area">
-					<div class="left">
-						<p>
-							Copyright Â© 2020.All Rights Reserved By <a
-								href="http://www.bootstrapmb.com/">Boleto </a>
-						</p>
-					</div>
-					<ul class="links">
-						<li><a href="#0">About</a></li>
-						<li><a href="#0">Terms Of Use</a></li>
-						<li><a href="#0">Privacy Policy</a></li>
-						<li><a href="#0">FAQ</a></li>
-						<li><a href="#0">Feedback</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- ==========Newslater-Section========== -->
+	
 	<script src="./resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script src="./resources/assets/js/modernizr-3.6.0.min.js"></script>
 	<script src="./resources/assets/js/plugins.js"></script>
@@ -218,4 +120,29 @@
 	<script src="./resources/assets/js/nice-select.js"></script>
 	<script src="./resources/assets/js/main.js"></script>
 </body>
+<script>
+
+	let cp1 = document.getElementById("cp1");
+	let cp2 = document.getElementById("cp2");
+	let cp3 = document.getElementById("cp3");
+	
+	cp1.addEventListener('click', function () {
+        myWindow = window.open("puzzle?level=1&movName=${curMovName}", "myWindow", "left=100, width=1500, height=1500");
+        // window.open("URL", "TITLE", "OPTION");
+		window.close();
+    })
+    cp2.addEventListener('click', function () {
+        myWindow = window.open("puzzle?level=2&movName=${curMovName}", "myWindow", "left=100, width=1500, height=1500");
+        // window.open("URL", "TITLE", "OPTION");
+        window.close();
+    })
+    cp3.addEventListener('click', function () {
+        myWindow = window.open("puzzle?level=3&movName=${curMovName}", "myWindow", "left=100, width=1500, height=1500");
+        // window.open("URL", "TITLE", "OPTION");
+        window.close();
+    })
+	
+	
+</script>
+
 </html>

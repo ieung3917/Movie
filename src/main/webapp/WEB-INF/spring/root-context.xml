@@ -24,7 +24,7 @@
 		<!-- 데이터베이스 접속경로, 아이디, 패스워드 설정 -->
 		<property name="url"
 			value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="MOVIE" />
+		<property name="username" value="movie" />
 		<property name="password" value="1111" />
 	</bean>
 

@@ -189,8 +189,7 @@
 										<div class="movie-list">
 											<div class="movie-thumb c-thumb">
 												<a href="#" onclick="movdetail('${list.movName}')"
-													class="w-100 bg_img h-100"> <img
-													src="${list.movMainPicture}" alt="movie"></a>
+													class="w-100 bg_img h-100"> <img src="${list.movMainPicture}" alt="movie"></a>
 											</div>
 											<div class="movie-content bg-one">
 												<h5 class="title">
@@ -378,7 +377,7 @@
 						+"		<img src=\"" + data[i].movMainPicture + "\" alt=\"movie\" stlye=\"width : auto ; \">"
 						+"</a></div>"
 						+"<div class=\"movie-content bg-one\">"
-						+"<h5 class=\"title\">"
+						+"<h5 =\"title\">"
 						+"<a href=\"#\" onclick=\"movdetail('"+data[i].movName+"')\">"+data[i].movName+"</a>"
 						+"</h5>"
 						+"<p class=\"duration\">"+data[i].movRunTime+"</p>"

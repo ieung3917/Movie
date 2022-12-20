@@ -15,4 +15,6 @@ public class PAY {
 	private String paySeatNum;		// 좌석번호
 	private String payMovPrice;		// 영화 가격
 	private String payTheRoom;		// 상영 관
+	private String payLeftList;		// 결제 후 남는 좌석리스트
+	
 }

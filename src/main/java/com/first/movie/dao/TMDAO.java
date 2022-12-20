@@ -13,28 +13,16 @@ import com.first.movie.dto.TIMEMOVIE;
 public class TMDAO {
 
 	// sql(mapper)로 연결
-		@Autowired
-		private SqlSessionTemplate sql;
-	
-	
+	@Autowired
+	private SqlSessionTemplate sql;
+
 	public TIMEMOVIE movView(String timMovName) {
 		System.out.println("(dao)timMovName : " + timMovName);
 		return sql.selectOne("TimeMovie.movView", timMovName);
 	}
 
-
-	public List<TIMEMOVIE> movList(String timMovName) {
-		System.out.println("(dao)timMovName : " + timMovName);
-		return sql.selectList("TimeMovie.movList", timMovName);
+	public List<TIMEMOVIE> movList(TIMEMOVIE tmovie) {
+		return sql.selectList("TimeMovie.movList", tmovie);
 	}
 
-
-	public String timBackPic(String payId) {
-		
-		return sql.selectOne("TimeMovie.timBackPic", payId);
-	}
-
-
-	
-	
 }

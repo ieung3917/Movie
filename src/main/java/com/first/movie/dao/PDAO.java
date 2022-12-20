@@ -25,9 +25,9 @@ public class PDAO {
 		return sql.selectList("Pay.payList", payId);
 	}
 
-	public PAY payKakao(String payId) {
+	public List<PAY> payKakao(String payId) {
 		
-		return sql.selectOne("Pay.payKakao", payId);
+		return sql.selectList("Pay.payKakao", payId);
 	}
 
 	public int chunwonSale(String payId) {

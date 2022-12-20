@@ -66,6 +66,9 @@
 					<div class="author">
 						<h2 class="title">${member.memName}님</h2> 
 												
+						<div class="info">포인트를 충전해야만 결제가 가능합니다 → 
+						<a href="mModiForm?memId=${member.memId}" class="custom-button">포인트 충전</a>
+						</div>
 					</div>
 					<div class="speak-con-wrapper">
 						<div class="speak-con-area">
@@ -165,4 +168,4 @@
 	<script src="./resources/assets/js/nice-select.js"></script>
 	<script src="./resources/assets/js/main.js"></script>
 </body>
-</html>	
+</html>

@@ -48,45 +48,45 @@
 	<!-- ==========Header-Section========== -->
 	<!-- ==========Banner-Section========== -->
 	<c:choose>
-		<c:when test="${movie.movPicture1 == ' '}">
-			<section class="details-banner bg_img"
-				data-background="./resources/assets/images/banner/banner02.jpg">
-		</c:when>
-		<c:otherwise>
-			<section class="details-banner bg_img"
-				data-background="${movie.movPicture1}">
-		</c:otherwise>
+	<c:when test="${movie.movPicture1 == ' '}">
+	<section class="details-banner bg_img"
+		data-background="./resources/assets/images/banner/banner02.jpg">
+	</c:when>
+	<c:otherwise>
+	<section class="details-banner bg_img"
+		data-background="${movie.movPicture1}">
+	</c:otherwise>
 	</c:choose>
+	
+		<div class="container">
+			<div class="details-banner-wrapper">
+				<div class="details-banner-thumb">
 
-	<div class="container">
-		<div class="details-banner-wrapper">
-			<div class="details-banner-thumb">
-
-				<!-- 메인 포스터 이미지, cgv공식 예고편 a태그 -->
-				<img src="${movie.movMainPicture}" alt="movie"><a
-					href="${movie.movTeaserUrl}" class="video-popup"><img
-					src="./resources/assets/images/movie/video-button.png" alt="movie"></a>
-			</div>
-			<div class="details-banner-content offset-lg-3">
-				<!-- 영화 이름 -->
-				<h3 class="title" id="movName">${movie.movName}</h3>
-				<!-- 영화 장르 버튼 -->
-				<a href="#0" class="button">${movie.movGenre}</a>
-				<div class="social-and-duration">
-					<div class="duration-area">
-						<div class="item">
-							<!-- 영화 개봉일 -->
-							<i class="fas fa-calendar-alt"></i><span>${movie.movDate}</span>
-						</div>
-						<div class="item">
-							<!-- 영화 러닝타임 -->
-							<i class="far fa-clock"></i><span>${movie.movRunTime}</span>
+					<!-- 메인 포스터 이미지, cgv공식 예고편 a태그 -->
+					<img src="${movie.movMainPicture}" alt="movie"><a
+						href="${movie.movTeaserUrl}" class="video-popup"><img
+						src="./resources/assets/images/movie/video-button.png" alt="movie"></a>
+				</div>
+				<div class="details-banner-content offset-lg-3">
+					<!-- 영화 이름 -->
+					<h3 class="title" id="movName">${movie.movName}</h3>
+					<!-- 영화 장르 버튼 -->
+					<a href="#0" class="button">${movie.movGenre}</a>
+					<div class="social-and-duration">
+						<div class="duration-area">
+							<div class="item">
+								<!-- 영화 개봉일 -->
+								<i class="fas fa-calendar-alt"></i><span>${movie.movDate}</span>
+							</div>
+							<div class="item">
+								<!-- 영화 러닝타임 -->
+								<i class="far fa-clock"></i><span>${movie.movRunTime}</span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</section>
 	<!-- ==========Banner-Section========== -->
 	<!-- ==========Book-Section========== -->
@@ -183,8 +183,7 @@
 						<p>영화 평점</p>
 					</div>
 				</div>
-				<a href="#" onclick="checkData('${movie.movName}')"
-					class="custom-button">영화예매</a>
+				<a href="#" onclick="checkData('${movie.movName}')"  class="custom-button">영화예매</a>
 			</div>
 		</div>
 	</section>
@@ -193,46 +192,37 @@
 	<section class="movie-details-section padding-top padding-bottom">
 		<div class="container">
 			<div class="row justify-content-center flex-wrap-reverse mb--50">
-
+				
 				<div class="col-lg-9 mb-50">
 					<div class="movie-details">
 						<h3 class="title">스틸컷</h3>
-
-						<c:choose>
-							<c:when test="${movie.movPicture1 == ' '}">
-								<h3>준비중입니다.</h3>
-								<br />
-							</c:when>
-							<c:otherwise>
-								<div class="details-photos owl-carousel">
-
-									<div class="thumb">
-										<a href="${movie.movPicture1}" class="img-pop"><img
-											src="${movie.movPicture1}" alt="movie"></a>
-									</div>
-									<div class="thumb">
-										<a href="${movie.movPicture2}" class="img-pop"><img
-											src="${movie.movPicture2}" alt="movie"></a>
-									</div>
-									<div class="thumb">
-										<a href="${movie.movPicture3}" class="img-pop"><img
-											src="${movie.movPicture3}" alt="movie"></a>
-									</div>
-									<div class="thumb">
-										<a href="${movie.movPicture4}" class="img-pop"><img
-											src="${movie.movPicture4}" alt="movie"></a>
-									</div>
-									<div class="thumb">
-										<a href="${movie.movPicture5}" class="img-pop"><img
-											src="${movie.movPicture5}" alt="movie"></a>
-									</div>
-									<div class="thumb">
-										<a href="${movie.movPicture6}" class="img-pop"><img
-											src="${movie.movPicture6}" alt="movie"></a>
-									</div>
-								</div>
-							</c:otherwise>
-						</c:choose>
+						<div class="details-photos owl-carousel">
+							
+							<div class="thumb">
+								<a href="${movie.movPicture1}" class="img-pop"><img
+									src="${movie.movPicture1}" alt="movie"></a>
+							</div>
+							<div class="thumb">
+								<a href="${movie.movPicture2}" class="img-pop"><img
+									src="${movie.movPicture2}" alt="movie"></a>
+							</div>
+							<div class="thumb">
+								<a href="${movie.movPicture3}" class="img-pop"><img
+									src="${movie.movPicture3}" alt="movie"></a>
+							</div>
+							<div class="thumb">
+								<a href="${movie.movPicture4}" class="img-pop"><img
+									src="${movie.movPicture4}" alt="movie"></a>
+							</div>
+							<div class="thumb">
+								<a href="${movie.movPicture5}" class="img-pop"><img
+									src="${movie.movPicture5}" alt="movie"></a>
+							</div>
+							<div class="thumb">
+								<a href="${movie.movPicture6}" class="img-pop"><img
+									src="${movie.movPicture6}" alt="movie"></a>
+							</div>
+						</div>
 						<div class="tab summery-review">
 							<ul class="tab-menu">
 								<li class="active">주요정보</li>
@@ -256,70 +246,58 @@
 												</div>
 											</div>
 										</div>
-										<c:choose>
-											<c:when test="${movie.movActorPic1 == ' '}">
-												<h3>준비중입니다.</h3>
-												<br />
-											</c:when>
-											<c:otherwise>
-												<div class="casting-slider owl-carousel">
-													<div class="cast-item">
+										<div class="casting-slider owl-carousel">
+											<div class="cast-item">
 
-														<a href="#0"><img src="${movie.movActorPic1}"
-															alt="cast"></a>
+												<a href="#0"><img src="${movie.movActorPic1}" alt="cast"></a>
 
-														<div class="cast-content">
-															<h6 class="cast-title">
-																<a href="#0">${movie.movActor1}</a>
-															</h6>
-															<span class="cate">주연</span>
-														</div>
-													</div>
-													<div class="cast-item">
-
-														<a href="#0"><img src="${movie.movActorPic2}"
-															alt="cast"></a>
-
-														<div class="cast-content">
-															<h6 class="cast-title">
-																<a href="#0">${movie.movActor2}</a>
-															</h6>
-															<span class="cate">주연</span>
-														</div>
-													</div>
-													<div class="cast-item">
-
-														<a href="#0"><img src="${movie.movActorPic3}"
-															alt="cast"></a>
-
-														<div class="cast-content">
-															<h6 class="cast-title">
-																<a href="#0">${movie.movActor3}</a>
-															</h6>
-															<span class="cate">주연</span>
-														</div>
-													</div>
-													<div class="cast-item">
-
-														<a href="#0"><img src="${movie.movActorPic4}"
-															alt="cast"></a>
-
-														<div class="cast-content">
-															<h6 class="cast-title">
-																<a href="#0">${movie.movActor4}</a>
-															</h6>
-															<span class="cate">주연</span>
-														</div>
-													</div>
+												<div class="cast-content">
+													<h6 class="cast-title">
+														<a href="#0">${movie.movActor1}</a>
+													</h6>
+													<span class="cate">주연</span>
 												</div>
-											</c:otherwise>
-										</c:choose>
+											</div>
+											<div class="cast-item">
+
+												<a href="#0"><img src="${movie.movActorPic2}" alt="cast"></a>
+
+												<div class="cast-content">
+													<h6 class="cast-title">
+														<a href="#0">${movie.movActor2}</a>
+													</h6>
+													<span class="cate">주연</span>
+												</div>
+											</div>
+											<div class="cast-item">
+
+												<a href="#0"><img src="${movie.movActorPic3}" alt="cast"></a>
+
+												<div class="cast-content">
+													<h6 class="cast-title">
+														<a href="#0">${movie.movActor3}</a>
+													</h6>
+													<span class="cate">주연</span>
+												</div>
+											</div>
+											<div class="cast-item">
+
+												<a href="#0"><img src="${movie.movActorPic4}" alt="cast"></a>
+
+												<div class="cast-content">
+													<h6 class="cast-title">
+														<a href="#0">${movie.movActor4}</a>
+													</h6>
+													<span class="cate">주연</span>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 
 								<div class="tab-item">
 									<h5>평점 등록</h5>
-									<div class="movie-review-item" style="padding-top: 30px;">
+									<div class="movie-review-item" style="padding-top : 30px;">
 										<div>
 											<select name="comStar" id="comStar"
 												style='background-color: #001432; color: white;'>
@@ -330,20 +308,19 @@
 												<option value="1">1점</option>
 											</select>
 											<textarea name="comContent" id="comContent" cols="90"
-												rows="5" style='background-color: #001432; color: white;'
-												placeholder="한줄평을 작성해주세요"></textarea>
+												rows="5" style='background-color: #001432; color : white;' placeholder="한줄평을 작성해주세요"></textarea>
 											<br />
 											<button onclick="comWrite() "
 												style='background-color: #003CBE;'>평점 등록</button>
 										</div>
 									</div>
 									<div id="comArea"></div>
-								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 		</div>
 	</section>
 	<!-- ==========Movie-Section========== -->
@@ -416,71 +393,72 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 <script>
-	// 최초시작 평점리스트 불러오기
-	$(document).ready(function comFirstList() {
-		let comMovie = "${movie.movName}";
 
-		$.ajax({
-			type : "POST",
-			url : "comment/cList",
-			data : {
-				"comMovie" : comMovie
-			},
-			dataType : "text",
-			success : function(list) {
-				var listm = eval(list);
-				commentList(listm);
-				console.log(listm);
-			},
-			error : function() {
-				alert("최초 평점 불러오기 통신 실패!");
-			}
-		});
-	});
-
-	// 평점 리스트
-	function commentList(list) {
-		let output = "";
-
-		for ( let i in list) {
-			output += "<div class=\"movie-review-item\" style=\"padding-top : 30px; \">";
-			output += "<div class=\"author\">";
-			output += "<div class=\"thumb\">";
-			output += "<a href=\"#0\"><img src=\"./resources/profile/" + list[i].comProfileName + "\"";
-			output += " alt=\"cast\"></a>";
-			output += "</div>";
-			output += "<div class=\"movie-review-info\">";
-			output += "<span class=\"reply-date\">" + list[i].comDate
-					+ "</span>";
-			output += "<h6 class=\"subtitle\">";
-			output += "<a href=\"#0\">" + list[i].comWriter + "</a>";
-			output += "</h6>";
-			output += "</div>";
-			output += "</div>";
-			output += "<div class=\"movie-review-content\">";
-			output += "<div class=\"review\">";
-			output += "<div class=\"rated\">";
-			for (var j = 0; j < list[i].comStar; j++) {
-				output += "<i class=\"flaticon-favorite-heart-button\"></i>";
-			}
-			output += "</div>";
-			output += "</div>";
-			output += "<p>" + list[i].comContent + "</p>";
-			output += "<div class=\"review-meta\">";
-			output += "<a onclick=\"comGood(" + list[i].comNum
-					+ ")\"><i class=\"flaticon-hand\"></i><span>"
-					+ list[i].comGood + "</span></a>";
-			output += "<a onclick=\"comBad("
-					+ list[i].comNum
-					+ ")\" class=\"dislike\"><i class=\"flaticon-dont-like-symbol\"></i><span>"
-					+ list[i].comBad + "</span></a>";
-			output += "</div>";
-			output += "</div>";
-			output += "</div>";
+// 최초시작 평점리스트 불러오기
+$(document).ready(function comFirstList(){
+	let comMovie = "${movie.movName}";
+	
+	$.ajax({
+		type : "POST",
+		url : "comment/cList",
+		data : {
+			"comMovie" : comMovie
+		},
+		dataType : "text",
+		success : function(list){
+			var listm = eval(list);
+			commentList(listm);
+			console.log(listm);
+		},
+		error : function(){
+			alert("최초 평점 불러오기 통신 실패!");
 		}
-		document.getElementById("comArea").innerHTML = output;
-	}
+	});
+});
+	
+//평점 리스트
+function commentList(list) {
+	let output = "";
 
+	for ( let i in list) {
+		output += "<div class=\"movie-review-item\" style=\"padding-top : 30px; \">";
+		output += "<div class=\"author\">";
+		output += "<div class=\"thumb\">";
+		output += "<a href=\"#0\"><img src=\"./resources/profile/" + list[i].comProfileName + "\"";
+		output += " alt=\"cast\"></a>";
+		output += "</div>";
+		output += "<div class=\"movie-review-info\">";
+		output += "<span class=\"reply-date\">" + list[i].comDate
+				+ "</span>";
+		output += "<h6 class=\"subtitle\">";
+		output += "<a href=\"#0\">" + list[i].comWriter + "</a>";
+		output += "</h6>";
+		output += "</div>";
+		output += "</div>";
+		output += "<div class=\"movie-review-content\">";
+		output += "<div class=\"review\">";
+		output += "<div class=\"rated\">";
+		for (var j = 0; j < list[i].comStar; j++) {
+			output += "<i class=\"flaticon-favorite-heart-button\"></i>";
+		}
+		output += "</div>";
+		output += "</div>";
+		output += "<p>" + list[i].comContent + "</p>";
+		output += "<div class=\"review-meta\">";
+		output += "<a onclick=\"comGood(" + list[i].comNum
+				+ ")\"><i class=\"flaticon-hand\"></i><span>"
+				+ list[i].comGood + "</span></a>";
+		output += "<a onclick=\"comBad("
+				+ list[i].comNum
+				+ ")\" class=\"dislike\"><i class=\"flaticon-dont-like-symbol\"></i><span>"
+				+ list[i].comBad + "</span></a>";
+		output += "</div>";
+		output += "</div>";
+		output += "</div>";
+	}
+	document.getElementById("comArea").innerHTML = output;
+}
+	
 	// 평점 작성
 	function comWrite() {
 
@@ -524,9 +502,9 @@
 
 	// 평점 좋아요
 	function comGood(comNum) {
-
+	
 		let comMovie = "${movie.movName}";
-
+		
 		console.log(comNum);
 
 		$.ajax({
@@ -546,10 +524,10 @@
 			}
 		})
 	}
-
+	
 	// 평점 싫어요
 	function comBad(comNum) {
-
+	
 		let comMovie = "${movie.movName}";
 
 		console.log(comNum);
@@ -571,19 +549,26 @@
 			}
 		})
 	}
-
-	function checkData(timMovName) {
-		var theCity = "${theCity}";
-		var timTheName = "${timTheName}";
-		var timstartDate = "${timStartDate}";
-		if (theCity) {
-			location.href = "movList?timMovName=" + timMovName + "&theCity="
-					+ theCity + "&timTheName=" + timTheName + "&timStartDate="
-					+ timstartDate;
-		} else {
+	
+	function checkData(timMovName){
+		var theCity="${theCity}";
+		var timTheName="${timTheName}";
+		var timstartDate="${timStartDate}";
+		
+		if(${loginId!=null}){
+		
+		if(theCity){
+			location.href="movList?timMovName="+timMovName+"&theCity="+theCity+"&timTheName="+timTheName+"&timStartDate="+timstartDate;
+		}else{
 			alert("영화관과 날짜를 선택하고 사용해주세요.");
-			location.href = "movie-list";
+			location.href="movie-list";
 		}
+			
+		} else{
+			alert('로그인 후 이용해주세요')
+		}
+		
 	}
+	
 </script>
 </html>

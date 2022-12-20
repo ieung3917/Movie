@@ -31,7 +31,8 @@
 	
 	<insert id="payInsert" parameterType="pay">
 		INSERT INTO PAYM VALUES(#{payPic}, #{payId}, #{payName}, #{payMovName}, #{payTheName}, 
-		 #{payTheRoom}, #{payStartDate}, #{payTimStart}, #{paySeatNum}, #{payMovPrice})
+		 #{payTheRoom}, #{payStartDate}, #{payTimStart}, #{paySeatNum}, #{payMovPrice}, #{payLeftList})
+		
 	</insert>
 
 </mapper>

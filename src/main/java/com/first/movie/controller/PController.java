@@ -1,18 +1,11 @@
 package com.first.movie.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.first.movie.dto.MEMBER;
 import com.first.movie.dto.PAY;
-import com.first.movie.dto.TICKET;
-import com.first.movie.service.MService;
+import com.first.movie.dto.TIMEMOVIE;
+import com.first.movie.service.MVService;
 import com.first.movie.service.PService;
-import com.first.movie.service.TService;
 
 
 @Controller
@@ -36,21 +27,13 @@ public class PController {
 	// MemberService 연결
 	@Autowired
 	private PService psvc;
+	
+	@Autowired
+	private MVService mvsvc;
 
 	@Autowired
 	private HttpSession session;
 
-	@RequestMapping(value = "/payList", method = RequestMethod.GET)
-	public ModelAndView payList(@RequestParam("payId") String payId) {
-
-		System.out.println("[1] jsp → controller \n payId : " + payId);
-
-		mav = psvc.payList(payId);
-
-//			System.out.println("[5] service → controller \n mav : " + mav);
-
-		return mav;
-	}
 
 	@RequestMapping(value = "/payTic", method = RequestMethod.GET)
 	public ModelAndView payTic(@RequestParam("payId") String payId) {
@@ -115,9 +98,12 @@ public class PController {
 	}
 
 	@RequestMapping(value = "/payInsert", method = RequestMethod.GET)
-	public ModelAndView payInsert(@ModelAttribute PAY pay) {
+	public ModelAndView payInsert(@ModelAttribute TIMEMOVIE timMov) {
+		
+		PAY pay = mvsvc.payPrint(timMov);
 		
 		mav = psvc.payInsert(pay);
+		mav = psvc.payList(pay.getPayId());
 		
 		return mav;
 	}

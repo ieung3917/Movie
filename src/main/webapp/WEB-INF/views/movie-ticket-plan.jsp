@@ -49,11 +49,7 @@
 		<div class="container">
 			<div class="details-banner-wrapper">
 				<div class="details-banner-content">
-					<h3 class="title"> ${timMovName}</h3>
-					<div class="tags">
-						<a href="#0">English</a><a href="#0">Hindi</a><a href="#0">Telegu</a><a
-							href="#0">Tamil</a>
-					</div>
+					<h3 class="title">${timMovName}</h3>
 				</div>
 			</div>
 		</div>
@@ -67,37 +63,40 @@
 					<div class="thumb">
 						<img src="./resources/assets/images/ticket/city.png" alt="ticket">
 					</div>
-					<span class="type">city</span><select class="select-bar"><option
-							value="london">London</option>
-						<option value="dhaka">dhaka</option>
-						<option value="rosario">rosario</option>
-						<option value="madrid">madrid</option>
-						<option value="koltaka">kolkata</option>
-						<option value="rome">rome</option>
-						<option value="khoksa">khoksa</option></select>
+					<span class="type">도시</span><select class="select-bar" id="region"
+						onchange="showCinema()">
+						
+						<option value="${theCity}" selected>${theCity}</option>
+						<c:if test="${theCity ne '인천'}">
+							<option value="인천">인천</option>
+						</c:if>
+						<c:if test="${theCity ne '서울'}">
+							<option value="서울">서울</option>
+						</c:if>
+						<c:if test="${theCity ne '경기'}">
+							<option value="경기">경기</option>
+						</c:if>
+
+					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group" id="setDate">
 					<div class="thumb">
 						<img src="./resources/assets/images/ticket/date.png" alt="ticket">
 					</div>
-					<span class="type">date</span><select class="select-bar"><option
-							value="26-12-19">23/10/2020</option>
-						<option value="26-12-19">24/10/2020</option>
-						<option value="26-12-19">25/10/2020</option>
-						<option value="26-12-19">26/10/2020</option></select>
+					<span class="type">날짜</span> <select class="select-bar" id="date"
+						onchange="RoomList()">
+						<option value=""></option>
+					</select>
 				</div>
-				<div class="form-group">
+				<div class="form-group" id="Cinema">
 					<div class="thumb">
-						<img src="./resources/assets/images/ticket/cinema.png" alt="ticket">
+						<img src="./resources/assets/images/ticket/cinema.png"
+							alt="ticket">
 					</div>
-					<span class="type">cinema</span><select class="select-bar"><option
-							value="Awaken">Awaken</option>
-						<option value="Venus">Venus</option>
-						<option value="wanted">wanted</option>
-						<option value="joker">joker</option>
-						<option value="fid">fid</option>
-						<option value="kidio">kidio</option>
-						<option value="mottus">mottus</option></select>
+					<span class="type">영화관</span> <select class="select-bar" id="place"
+						onchange="RoomList()">
+						<option value=""></option>
+					</select>
 				</div>
 			</form>
 		</div>
@@ -107,31 +106,28 @@
 	<div class="ticket-plan-section padding-bottom padding-top">
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-lg-9 mb-5 mb-lg-0">
+				<div class="col-lg-9 mb-5 mb-lg-0" id="theseat">
 					<ul class="seat-plan-wrapper bg-five">
-					
-					
-						<c:forEach var="tm" items="${tm}">
-						<li><div class="movie-name">
-								<div class="icons">
-									<i class="far fa-heart"></i><i class="fas fa-heart"></i>
+						<c:forEach var="tmData" items="${tm}">
+							<li><div class="movie-name">
+									<div class="icons">
+										<i class="far fa-heart"></i><i class="fas fa-heart"></i>
+									</div>
+									<a href="#0" class="name">${tmData.timTheRoom}</a>
+									<div class="location-icon">
+										<i class="fas fa-map-marker-alt"></i>
+									</div>
 								</div>
-								<a href="#0" class="name">${tm.timTheRoom}</a>
-								<div class="location-icon">
-									<i class="fas fa-map-marker-alt"></i>
-								</div>
-							</div>
-							<div class="movie-schedule">
-								<div class="item" 
-								onclick="location.href = 'movie-seat-plan?timMovName=${tm.timMovName}&timTheName=${tm.timTheName}&timTheRoom=${tm.timTheRoom} & timStartDate=${tm.timStartDate} & timCurTime=${tm.timStartTime1}'">
-								${tm.timStartTime1}</div>
-								<div class="item" 
-								onclick="location.href = 'movie-seat-plan?timMovName=${tm.timMovName}&timTheName=${tm.timTheName}&timTheRoom=${tm.timTheRoom} & timStartDate=${tm.timStartDate} & timCurTime=${tm.timStartTime2}'">${tm.timStartTime2}</div>
-								<div class="item" 
-								onclick="location.href = 'movie-seat-plan?timMovName=${tm.timMovName}&timTheName=${tm.timTheName}&timTheRoom=${tm.timTheRoom} & timStartDate=${tm.timStartDate} & timCurTime=${tm.timStartTime3}'">${tm.timStartTime3}</div>
-								<div class="item" 
-								onclick="location.href = 'movie-seat-plan?timMovName=${tm.timMovName}&timTheName=${tm.timTheName}&timTheRoom=${tm.timTheRoom} & timStartDate=${tm.timStartDate} & timCurTime=${tm.timStartTime4}'">${tm.timStartTime4}</div>
-							</div></li>
+								<div class="movie-schedule">
+									<div class="item"
+										onclick="location.href = 'movie-seat-plan?timMovName=${tmData.timMovName}&timTheName=${tmData.timTheName}&timTheRoom=${tmData.timTheRoom}&timStartDate=${tmData.timStartDate}&timCurTime=${tmData.timStartTime1}'">${tmData.timStartTime1}</div>
+									<div class="item"
+										onclick="location.href = 'movie-seat-plan?timMovName=${tmData.timMovName}&timTheName=${tmData.timTheName}&timTheRoom=${tmData.timTheRoom}&timStartDate=${tmData.timStartDate}&timCurTime=${tmData.timStartTime2}'">${tmData.timStartTime2}</div>
+									<div class="item"
+										onclick="location.href = 'movie-seat-plan?timMovName=${tmData.timMovName}&timTheName=${tmData.timTheName}&timTheRoom=${tmData.timTheRoom}&timStartDate=${tmData.timStartDate}&timCurTime=${tmData.timStartTime3}'">${tmData.timStartTime3}</div>
+									<div class="item"
+										onclick="location.href = 'movie-seat-plan?timMovName=${tmData.timMovName}&timTheName=${tmData.timTheName}&timTheRoom=${tmData.timTheRoom}&timStartDate=${tmData.timStartDate}&timCurTime=${tmData.timStartTime4}'">${tmData.timStartTime4}</div>
+								</div></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -174,6 +170,172 @@
 			</div>
 		</div>
 	</footer>
+	<script src="https://code.jquery.com/jquery-3.6.1.js"
+	integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+	<script>
+$(document).ready(function ticketPlanStart(){
+	showCinema();
+});
+
+function showCinema(){
+let theCity = $("#region").val();
+if(!theCity){
+	var textchat="<div class=\"thumb\">"
+		+"<img src=\"./resources/assets/images/ticket/cinema.png\" alt=\"ticket\">"
+		+"</div>"
+		+"<span class=\"type\">영화관</span>"
+		+"<select class=\"nice-select\" id=\"place\">"
+		+"<option value=\"\" style='color:black;font-weight:bold;'>-------</option>"
+		+"</select>";
+	document.getElementById("Cinema").innerHTML = textchat;
+	var setDatechat="<div class=\"thumb\"><img src=\"./resources/assets/images/ticket/date.png\" alt=\"ticket\"></div>"
+		+"<span class=\"type\">날짜</span>"
+		+"<select class=\"nice-select\" id=\"date\">"
+		+"<option value=\"\" style='color:black;font-weight:bold;'>-------</option>"
+		+"</select>";
+	document.getElementById("setDate").innerHTML = setDatechat;
+}else{
+$.ajax({
+	type : "POST",
+	url : "findName",
+	data : {
+		"theCity" : theCity
+	},
+	dataType : "text",
+	success : function(data) {
+	var textchat="<div class=\"thumb\">"
+	+"<img src=\"./resources/assets/images/ticket/cinema.png\" alt=\"ticket\">"
+	+"</div>"
+	+"<span class=\"type\">영화관</span>"
+	+"<select class=\"nice-select\" id=\"place\" onchange=\"RoomList()\">";
+	var imf = eval(data);
+			for(i of imf){
+				if(i=="${timTheName}"){
+					textchat+="<option value='"+i+"' style='color:black;font-weight:bold;' selected>"+i+"</option>";
+				}
+				else{
+	textchat+="<option value='"+i+"' style='color:black;font-weight:bold;'>"+i+"</option>";}
+		}
+			textchat+="</select>";
+	document.getElementById("Cinema").innerHTML = textchat;
+	Dateinter();
+	},
+	error : function() {
+		alert("findCity함수 통신실패!");
+
+	}
+});}
+}
+
+function Dateinter(){
+let today = new Date();   
+let year = today.getFullYear(); // 년도
+let month = (today.getMonth()+1);  // 월
+let date = today.getDate();  // 날짜
+var setDatechat="<div class=\"thumb\"><img src=\"./resources/assets/images/ticket/date.png\" alt=\"ticket\"></div>"
++"<span class=\"type\">날짜</span>"
++"<select class=\"nice-select\" id=\"date\" onchange=\"RoomList()\">";
+for(var i=0;i<5;i++){
+	
+	if((date+i)<10){
+		setdate="0"+(date+i)+"일";
+	}else if((date+i)>31){
+		month=month+1;
+		setdate=(date+i)+"일";
+	}else{
+		setdate=(date+i)+"일";
+	}
+	if(month<10){
+		setmonth="0"+month+"월";
+	}else if(month>12){
+		setyear=year+1;
+		setmonth=(month+1)+"월";
+	}
+	else{
+		setmonth=month+"월";
+	}
+	setyear=year+"년";
+	
+	setDatechat+="<option value='"+setyear+setmonth+setdate+"' style='color:black;font-weight:bold;'>"+setyear+setmonth+setdate+"</option>";
+}
+setDatechat+="</select>";
+document.getElementById("setDate").innerHTML = setDatechat;
+RoomList();
+}
+
+function RoomList(){
+let timTheName = $("#place").val();
+let timStartDate = $("#date").val();
+let timMovName = "${timMovName}";
+//bodymovList
+$.ajax({
+	type : "POST",
+	url : "bodymovList",
+	data : {
+		"timTheName" : timTheName,
+		"timStartDate" : timStartDate,
+		"timMovName" : timMovName
+		
+	},
+	dataType : "json",
+	success : function(data) {
+	
+	var text="<ul class=\"seat-plan-wrapper bg-five\">";
+	for(i in data){
+		
+		if(i == 0){
+			
+		}else if(data[i].timTheRoom == data[i-1].timTheRoom){
+			continue;
+		}else{
+			
+		}
+		
+	text+="<li><div class=\"movie-name\">"
+		+"<div class=\"icons\">"
+		+"<i class=\"far fa-heart\"></i><i class=\"fas fa-heart\"></i>"
+		+"</div>"
+		+"<a href=\"#0\" class=\"name\">"+data[i].timTheRoom+"</a>"
+		+"<div class=\"location-icon\">"
+		+"<i class=\"fas fa-map-marker-alt\"></i>"
+		+"</div>"
+		+"</div>"
+		+"<div class=\"movie-schedule\">";
+		if(data[i].timStartTime1 == ""){
+				
+		}else{
+		text += "<div class=\"item\" onclick=\"location.href = 'movie-seat-plan?timMovName="+data[i].timMovName+"&timTheName="+data[i].timTheName+"&timTheRoom="+data[i].timTheRoom+"&timStartDate="+data[i].timStartDate+"&timCurTime="+data[i].timStartTime1+"'\">"+data[i].timStartTime1+"</div>"
+		}
+		if(data[i].timStartTime2 == ""){
+
+		}else{
+			text += "<div class=\"item\" onclick=\"location.href = 'movie-seat-plan?timMovName="+data[i].timMovName+"&timTheName="+data[i].timTheName+"&timTheRoom="+data[i].timTheRoom+"&timStartDate="+data[i].timStartDate+"&timCurTime="+data[i].timStartTime2+"'\">"+data[i].timStartTime2+"</div>";
+		}
+		if(data[i].timStartTime3 == ""){
+			
+		}else{
+		text +="<div class=\"item\" onclick=\"location.href = 'movie-seat-plan?timMovName="+data[i].timMovName+"&timTheName="+data[i].timTheName+"&timTheRoom="+data[i].timTheRoom+"&timStartDate="+data[i].timStartDate+"&timCurTime="+data[i].timStartTime3+"'\">"+data[i].timStartTime3+"</div>"
+		}
+		if(data[i].timStartTime4 == ""){
+			
+		}else{
+		text +="<div class=\"item\" onclick=\"location.href = 'movie-seat-plan?timMovName="+data[i].timMovName+"&timTheName="+data[i].timTheName+"&timTheRoom="+data[i].timTheRoom+"&timStartDate="+data[i].timStartDate+"&timCurTime="+data[i].timStartTime4+"'\">"+data[i].timStartTime4+"</div>"
+		}
+		text +="</div></li>";
+		}
+		text+="</ul>";
+		document.getElementById("theseat").innerHTML = text;
+		
+	},
+	error : function() {
+		alert("bodymovList함수 통신실패!");
+
+	}
+});
+}
+</script>
+	
 	<!-- ==========Newslater-Section========== -->
 	<script src="./resources/assets/js/jquery-3.3.1.min.js"></script>
 	<script src="./resources/assets/js/modernizr-3.6.0.min.js"></script>
@@ -189,9 +351,6 @@
 	<script src="./resources/assets/js/nice-select.js"></script>
 	<script src="./resources/assets/js/main.js"></script>
 </body>
-<script>
-	function movOne(){
-		
-	}
-</script>
+
+
 </html>

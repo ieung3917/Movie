@@ -44,9 +44,9 @@
 		<div class="container">
 			<div class="details-banner-wrapper">
 				<div class="details-banner-content style-two">
-					<h3 class="title">Venus</h3>
+					<h3 class="title">예매한 내역</h3>
 					<div class="tags">
-						<a href="#0">City Walk</a><a href="#0">English - 2D</a>
+					
 					</div>
 				</div>
 			</div>
@@ -68,9 +68,6 @@
 						<ul>
 							<li><h6 class="subtitle">예매번호</h6>
 								<span class="info">${tic.ticNum}</span>
-								<span><img src="${tic.ticPic}" width="170vw;"
-									height="220vw;"
-									style="position: absolute; top: 5vw; left: 10vw;"></span>
 								</li>
 							<li><h6 class="subtitle">회원이름</h6>
 								<span class="info">${tic.ticName}</span></li>

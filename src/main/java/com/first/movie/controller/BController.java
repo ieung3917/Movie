@@ -47,12 +47,6 @@ public class BController {
 
 		return "index";
 	}
-	
-	@RequestMapping(value = "/timeMovie", method = RequestMethod.GET)
-	public String timeMovie() {
-
-		return "timeMovie";
-	}
 
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
 	public String fourOneFour() {
@@ -95,6 +89,12 @@ public class BController {
 
 		return "event-checkout";
 	}
+	
+	@RequestMapping(value = "/event-ticket", method = RequestMethod.GET)
+	public String eventticket() {
+
+		return "event-ticket";
+	}
 
 	@RequestMapping(value = "/event-details", method = RequestMethod.GET)
 	public String eventdetails() {
@@ -114,11 +114,6 @@ public class BController {
 		return "MyPage";
 	}
 
-	@RequestMapping(value = "/event-ticket", method = RequestMethod.GET)
-	public String eventticket() {
-
-		return "event-ticket";
-	}
 
 	@RequestMapping(value = "/index-2", method = RequestMethod.GET)
 	public String index2() {
@@ -126,11 +121,6 @@ public class BController {
 		return "index-2";
 	}
 
-	@RequestMapping(value = "/movie-checkout", method = RequestMethod.GET)
-	public String moviecheckout() {
-
-		return "movie-checkout";
-	}
 
 	// 영화정보 상세보기 창. movName값을 받아서 접속
 	@RequestMapping(value = "/movie-details", method = RequestMethod.GET)
@@ -161,12 +151,6 @@ public class BController {
 		mav = bsvc.movieList();
 		System.out.println("[1] MAV " + mav);
 		return mav;
-	}
-
-	@RequestMapping(value = "/movie-seat-plan", method = RequestMethod.GET)
-	public String movieseatplan() {
-
-		return "movie-seat-plan";
 	}
 
 	@RequestMapping(value = "/movie-ticket-plan", method = RequestMethod.GET)

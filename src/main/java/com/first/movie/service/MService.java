@@ -48,7 +48,7 @@ public class MService {
 		
 		@Autowired
 		private JavaMailSender mailSender;
-		
+
 		public ModelAndView mCheckId(String memId) {
 			
 			String checkId  = mdao.mCheckId(memId);
@@ -65,7 +65,7 @@ public class MService {
 			
 			return mav;
 		}
-		
+
 		public ModelAndView mJoin(MEMBER member) throws IllegalStateException, IOException {
 			
 			System.out.println("member : " + member);
@@ -94,6 +94,7 @@ public class MService {
 			
 			System.out.println("member : " + member);
 		
+			member.setMemCoupon("STD:0/PRM:0_VIP:0,");
 			
 			int result = mdao.mJoin(member);
 			
@@ -124,7 +125,6 @@ public class MService {
 
 			return mav;
 		}
-
 
 
 		public ModelAndView mList(int page, int limit) {
@@ -196,8 +196,6 @@ public class MService {
 		public ModelAndView mModify(MEMBER member) throws IllegalStateException, IOException {
 			System.out.println("member : " + member);
 			
-		
-			
 			MultipartFile memProfile = member.getMemProfile();
 			
 			UUID uuid = UUID.randomUUID();
@@ -219,9 +217,6 @@ public class MService {
 			member.setMemPw(pwEnc.encode(member.getMemPw()));
 			
 			System.out.println("member : " + member);
-			
-			
-
 			
 			int result = mdao.mModify(member);
 			
@@ -285,6 +280,6 @@ public class MService {
 			
 			return uuid;
 		}
-		
-		
+
+
 }

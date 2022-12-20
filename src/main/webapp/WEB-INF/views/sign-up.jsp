@@ -33,6 +33,10 @@ img {
 	display: none;
 }
 
+.upload {
+	
+}
+
 .image-preview {
 	width: 200px;
 
@@ -67,9 +71,7 @@ img {
 							<input type="file" name="memProfile" class="real-upload" accept="image/*" required multiple />
 					<ul class="image-preview"
 					style="width: 100%; height: 100%; object-fit: cover"></ul>
-					<div class="form-group" style="margin-top: 10px;">
-					<span id="bt"><input type="button" class="upload" onclick="bt1()" value="사진 업로드"></span>			 
-						</div>
+					<span id="bt"><button class="upload" onclick="bt1()">사진업로드</button></span>			 
 						</div>
 						<div class="form-group">
 							<label>아이디<span>
@@ -135,8 +137,6 @@ img {
 </body>
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <script>
-
-// 비밀번호 정규식
 function pwRegexp(){
 	let memPw = document.getElementById("memPw").value;
 	let pwResult1 = document.getElementById("pwResult1");
@@ -173,7 +173,6 @@ function pwRegexp(){
 
 }
 
-// 비밀번호 확인
 function pwCheck(){
 	
 	let memPw = document.getElementById("memPw").value;
@@ -193,9 +192,10 @@ function pwCheck(){
 	
 }
 
-// 회원가입 버튼 활성화(비밀번호 정규식 & 비밀번호확인)
 function checkConfirm(){
-
+	
+	
+	
 	if(!pwRegexp() || !pwCheck()){
 		
 		alert('비밀번호를 확인해주세요!');
@@ -206,7 +206,6 @@ function checkConfirm(){
 	}
 }
 
-// 아이디 중복확인
 function checkId(){
 	let memId = document.getElementById("memId").value;
 	// location.href = "idCheck?memId=" + memId;
@@ -243,7 +242,6 @@ function checkId(){
 	
 }
 
-// 이미지파일 받기
 function getImageFiles(e) {
 	const uploadFiles = [];
 	const files = e.currentTarget.files;
@@ -274,7 +272,6 @@ function getImageFiles(e) {
 	  }
 	});
   }
-
 
   function createElement(e, file) {
 	  

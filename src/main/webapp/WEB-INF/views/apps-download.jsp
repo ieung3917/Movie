@@ -186,7 +186,7 @@
 		<div class="container">
 			<div class="footer-top">
 				<div class="logo">
-					<a href="index"><img
+					<a href="index-1"><img
 						src="./resources/assets/images/footer/footer-logo.png" alt="footer"></a>
 				</div>
 				<ul class="social-icons">

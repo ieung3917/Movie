@@ -72,8 +72,8 @@
 					<span class="date">${date}</span>
 				</div>
 				<div class="item">
-					<h5 class="title">05:00</h5>
-					<p>Mins Left</p>
+					<h5 class="title">${minsLeft}</h5>
+					<p>남았습니다.</p>
 				</div>
 			</div>
 		</div>
@@ -84,155 +84,47 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="checkout-widget checkout-contact">
-						<h5 class="title">Get Your Tickets</h5>
-						<div class="ticket--area row justify-content-center">
-							<div class="col-sm-6 col-md-4">
-								<div class="ticket-item">
-									<div class="ticket-thumb">
-										<img src="./resources/assets/images/event/ticket/ticket01.png"
-											alt="event">
-									</div>
-									<div class="ticket-content">
-										<span class="ticket-title">Standard Ticket</span>
-										<h2 class="amount">
-											<sup>$</sup>49
-										</h2>
-										<a href="#0" class="t-button" onclick="chunwonSale()"><i
-											class="fas fa-plus"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-4">
-								<div class="ticket-item two">
-									<div class="hot">
-										<span>hot</span>
-									</div>
-									<div class="ticket-thumb">
-										<img src="./resources/assets/images/event/ticket/ticket02.png"
-											alt="event">
-									</div>
-									<div class="ticket-content">
-										<span class="ticket-title">Premium Ticket</span>
-										<h2 class="amount">
-											<sup>$</sup>79
-										</h2>
-										<a href="#0" class="t-button" onclick="samchunwonSale()"><i class="fas fa-check"></i></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6 col-md-4">
-								<div class="ticket-item three">
-									<div class="ticket-thumb">
-										<img src="./resources/assets/images/event/ticket/ticket03.png"
-											alt="event">
-									</div>
-									<div class="ticket-content">
-										<span class="ticket-title">VIP Ticket</span>
-										<h2 class="amount">
-											<sup>$</sup>99
-										</h2>
-										<a href="#0" class="t-button" onclick="ochunwonSale()"><i
-											class="fas fa-plus"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="row mb-30-none">
-							<div class="col-md-6 col-xl-5">
-								<form class="cart-button event-cart">
-									<span class="d-inline-block">Number of Seats :</span>
-									<div class="cart-plus-minus">
-										<div class="dec qtybutton">-</div>
-										<input class="cart-plus-minus-box" type="text"
-											name="qtybutton" value="2">
-										<div class="inc qtybutton">+</div>
-									</div>
-								</form>
-							</div>
-							<div class="col-md-6 col-xl-7">
-								<form class="checkout-contact-form mb-0">
-									<div class="form-group">
-										<input type="text" placeholder="Please enter promo code">
-									</div>
-									<div class="form-group">
-										<input type="submit" value="Verify" class="custom-button">
-									</div>
-								</form>
-							</div>
-						</div>
+					
+						<div class="checkout-widget checkout-contact">
+						<h5 class="title" >보유 쿠폰</h5>
+								<span id="cpBtnSpan">
+										<input id='cpBtn1' onclick='cpListBtn()' type="button" value="보유쿠폰 확인" class="custom-button" style="width:10vw; position: relative; top: -5.5vw; left: 10vw;"><input id="cpBtn" onclick="cpBtn()" type="button" value="쿠폰 얻으러 가기" class="custom-button" style="width:10vw; position: relative; top: -5.5vw; left: 12vw;">
+										</span>
+						<div class="ticket--area row justify-content-left">
+						
+							<div class="col-sm-6 col-md-4"> 
+							<span id="cpSpan1">
+								</span> </div>
+								<div class="col-sm-6 col-md-4"> 
+							<span id="cpSpan2">
+								</span> </div>
+								<div class="col-sm-6 col-md-4"> 
+							<span id="cpSpan3">
+								</span> </div>
+							</div> 
 					</div>
-					<div class="checkout-widget checkout-card mb-0">
-						<h5 class="title">Payment Option</h5>
-						<ul class="payment-option">
-							<li class="active"><a href="#0"><img
-									src="./resources/assets/images/payment/card.png" alt="payment"><span>Credit
-										Card</span></a></li>
-							<li><a href="#0"><img
-									src="./resources/assets/images/payment/card.png" alt="payment"><span>Debit
-										Card</span></a></li>
-							<li><a href="#0"><img
-									src="./resources/assets/images/payment/paypal.png"
-									alt="payment"><span>paypal</span></a></li>
-						</ul>
-						<h6 class="subtitle">Enter Your Card Details</h6>
-						<form class="payment-card-form">
-							<div class="form-group w-100">
-								<label for="card1">Card Details</label><input type="text"
-									id="card1">
-								<div class="right-icon">
-									<i class="flaticon-lock"></i>
-								</div>
-							</div>
-							<div class="form-group w-100">
-								<label for="card2">Name on the Card</label><input type="text"
-									id="card2">
-							</div>
-							<div class="form-group">
-								<label for="card3">Expiration</label><input type="text"
-									id="card3" placeholder="MM/YY">
-							</div>
-							<div class="form-group">
-								<label for="card4">CVV</label><input type="text" id="card4"
-									placeholder="CVV">
-							</div>
-							<div class="form-group check-group">
-								<input id="card5" type="checkbox" checked><label
-									for="card5"><span class="title">QuickPay</span><span
-									class="info">Save this card information to my Boleto
-										account and make faster payments.</span></label>
-							</div>
-							<div class="form-group">
-								<input type="submit" class="custom-button" value="make payment">
-							</div>
-						</form>
-						<p class="notice">
-							By Clicking "Make Payment" you agree to the <a href="#0">terms
-								and conditions</a>
-						</p>
-					</div>
-				</div>
+</div>
 
 				<div class="col-lg-4">
 					<div class="booking-summery bg-one">
 						<h4 class="title">선택하신 영화</h4>
 						<ul>
 
-							<li><h6 class="subtitle">회원이름</h6> <span class="info">${p[0].payName}</span>
-								<span><img src="${p[0].payPic}" width="170vw;"
+							<li><h6 class="subtitle">회원이름</h6> <span class="info">${p.payName}</span>
+								<span><img src="${p.payPic}" width="170vw;"
 									height="220vw;"
 									style="position: absolute; top: 5vw; left: 10vw;"></span></li>
 							<br />
 							<li><h6 class="subtitle">
 									<span>영화이름</span>
-								</h6> <span class="info">${p[0].payMovName}</span></li>
+								</h6> <span class="info">${p.payMovName}</span></li>
 							<br />
 							<li><h6 class="subtitle">
-									<span>${p[0].payTheName}</span><span>${p[0].payTheRoom},
-										${p[0].paySeatNum}</span>
+									<span>${p.payTheName}</span><span>${p.payTheRoom},
+										${p.paySeatNum}</span>
 								</h6>
 								<div class="info">
-									<span>${p[0].payStartDate}, ${p[0].payTimStart}</span>
+									<span>${p.payStartDate}, ${p.payTimStart}</span>
 
 								</div></li>
 
@@ -240,7 +132,7 @@
 						<div class="proceed-area  text-center">
 							<h6 class="subtitle">
 								<span>가격 : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								 ${p[0].payMovPrice}원</span>
+								 ${p.payMovPrice}원</span>
 							</h6>
 							<h6 class="subtitle">
 								<span id="SalePrice"></span>
@@ -415,5 +307,78 @@
 		});
 
 	}
+	
+	
+	function cpBtn(){
+		let span = document.getElementById("cpBtnSpan");
+		
+		myWindow = window.open("event-ticket", "coupon", "left=100, width=1500, height=1500");
+		
+		span.innerHTML = "<input id='cpBtn' onclick='cpListBtn()' type='button' value='보유쿠폰 확인' class='custom-button' style='width:15vw; position: relative; top: -5.5vw; left: 15vw;'>";
+		
+	}
+	function cpListBtn(){
+		let span1 = document.getElementById("cpSpan1");
+		let span2 = document.getElementById("cpSpan2");
+		let span3 = document.getElementById("cpSpan3");
+		
+		$.ajax({
+			type : "POST",
+			url : "cpCheck",
+			data : {	
+				"loginId" : "${loginId}"
+			},
+			dataType : "text",
+			success : function(result){
+				let cpList = eval(result);
+				for(i in cpList){
+					if(i == 0){
+						if(cpList[i] != 0){
+							span1.innerHTML = "<div class='ticket-item'> <div class='ticket-thumb'> <img src='https://upload.wikimedia.org/wikipedia/commons/2/27/The_Standard_logo.png' alt='event'> </div> <div class='ticket-content'> <span class='ticket-title'>Standard Coupon</span> <h2 class='amount'> <sup style='font-size:25px;'>￦</sup>1000</h2> <a href='#0' onclick=\"cpSel('1')\" class='t-button'><span id='cpSel1'><i class='fas fa-plus'></i></span></a></div> </div>";
+						}
+					}
+					if(i == 1){
+						if(cpList[i] != 0){
+							span2.innerHTML = "<div class='ticket-item two'> <div class='ticket-thumb'><img src='https://www.kindpng.com/picc/m/491-4919441_premium-stamp-psd-tag-special-promotion-png-transparent.png' alt='event'></div><div class='ticket-content'><span class='ticket-title'>Premium Coupon</span><h2 class='amount'><sup style='font-size:25px;'>￦</sup>3000</h2>	<a href='#0' onclick=\"cpSel('2')\" class='t-button'><span id='cpSel2'><i class='fas fa-plus'></i></span></a></div></div>";
+						}
+					}
+					if(i == 2){
+						if(cpList[i] != 0){
+							span3.innerHTML = "<div class='ticket-item three'><div class='ticket-thumb'><img src='https://lopezdesign.com/wp-content/uploads/2020/08/VIP-logo-new.jpg' alt='event'></div><div class='ticket-content'><span class='ticket-title'>VIP Coupon</span><h2 class='amount'><sup style='font-size:25px;'>￦</sup>5000</h2><a href='#0' onclick=\"cpSel('3')\" class='t-button'><span id='cpSel3'><i class='fas fa-plus'></i></span></a></div></div>";
+						}
+					}
+				}
+			},
+			error : function(){
+				alert("cpCheck 함수 통신실패!");
+			}	
+		});	
+	}
+	
+function cpSel(num){
+	let span1 = document.getElementById("cpSel1");
+	let span2 = document.getElementById("cpSel2");
+	let span3 = document.getElementById("cpSel3");
+	
+	if(num == "1"){
+		chunwonSale();
+		span1.innerHTML = "<i class='fas fa-check'></i>";
+		span2.innerHTML = "<i class='fas fa-plus'></i>";
+		span3.innerHTML = "<i class='fas fa-plus'></i>";
+	}else if(num =="2"){
+		samchunwonSale();
+		span1.innerHTML = "<i class='fas fa-plus'></i>";
+		span2.innerHTML = "<i class='fas fa-check'></i>";
+		span3.innerHTML = "<i class='fas fa-plus'></i>";
+	}else{
+		ochunwonSale();
+		span1.innerHTML = "<i class='fas fa-plus'></i>";
+		span2.innerHTML = "<i class='fas fa-plus'></i>";
+		span3.innerHTML = "<i class='fas fa-check'></i>";
+	}
+}
+</script>
+	
 </script>
 </html>
+

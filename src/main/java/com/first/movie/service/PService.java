@@ -22,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.first.movie.dao.MDAO;
 import com.first.movie.dao.PDAO;
 import com.first.movie.dao.TDAO;
-import com.first.movie.dao.TMDAO;
 import com.first.movie.dto.MEMBER;
 import com.first.movie.dto.PAGE;
 import com.first.movie.dto.PAY;
@@ -43,14 +42,6 @@ public class PService {
 		// DAO
 		@Autowired
 		private TDAO tdao;
-
-		// DAO
-		@Autowired
-		private TMDAO tmdao;
-
-		// MDAO
-		@Autowired
-		private MDAO mdao;
 		
 		// session 
 		@Autowired
@@ -65,10 +56,17 @@ public class PService {
 
 			List<PAY> pay = pdao.payList(payId);
 			
+			int getNum = 0;
+			for(int i = 0; i < pay.size() ; i++) {
+				if(pay.get(i).getPaySeatNum().equals(session.getAttribute("seatPay").toString())) {
+					getNum = i;
+				}
+			}
+			
 			
 			
 			// model
-			mav.addObject("p", pay);	
+			mav.addObject("p", pay.get(getNum));	
 			
 			// view
 			mav.setViewName("movie-checkout");
@@ -80,7 +78,8 @@ public class PService {
 
 		public ModelAndView payKakao(String payId) {
 			
-			PAY pay = pdao.payKakao(payId);
+			List<PAY> pay0 = pdao.payKakao(payId);
+			PAY pay = pay0.get(pay0.size()-1);
 			
 			mav.addObject("pay", pay);
 			mav.setViewName("kakaoPay");
@@ -102,9 +101,6 @@ public class PService {
 				payList = null;
 				
 			}
-			
-			
-			
 			return payList;
 		}
 		
@@ -122,9 +118,6 @@ public class PService {
 				payList = null;
 				
 			}
-			
-			
-			
 			return payList;
 		}
 		
@@ -188,6 +181,8 @@ public class PService {
 		public ModelAndView payInsert(PAY pay) {
 
 			int result = pdao.payInsert(pay);
+			
+			session.setAttribute("curMovName", pay.getPayMovName());
 			
 			return mav;
 		}

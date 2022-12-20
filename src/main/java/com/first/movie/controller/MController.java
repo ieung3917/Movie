@@ -76,13 +76,14 @@ public class MController {
 	}
 
 	// mLogout : 로그아웃
-	@RequestMapping(value = "/mLogout", method = RequestMethod.GET)
-	public String mLogout() {
+		@RequestMapping(value = "/mLogout", method = RequestMethod.GET)
+		public String mLogout() {
 
-		session.invalidate();
+			session.invalidate();
 
-		return "redirect:/index";
-	}
+			return "redirect:/index";
+		}
+
 
 	// mList : 페이징 처리 & 리스트
 	@RequestMapping(value = "/mList", method = RequestMethod.GET)
@@ -122,7 +123,6 @@ public class MController {
 	}
 
 	// mModify : 수정
-
 	@RequestMapping(value = "/mModify", method = RequestMethod.POST)
 	public ModelAndView mModify(@ModelAttribute MEMBER member) throws IllegalStateException, IOException {
 

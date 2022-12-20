@@ -56,13 +56,7 @@ public class MDAO {
 
 		return sql.delete("Member.mDelete", memId);
 	}
-
-	public String memName(String payId) {
-
-		return sql.selectOne("Member.memName", payId);
-	}
-
-	// 12.16 이미지세션
+	
 	public String Idimg(String memId) {
 
 		return sql.selectOne("Member.Idimg", memId);

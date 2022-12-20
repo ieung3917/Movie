@@ -1,9 +1,11 @@
 package com.first.movie.service;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.jsoup.Jsoup;
@@ -11,13 +13,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.first.movie.dao.MVDAO;
+import com.first.movie.dto.COUPON;
 import com.first.movie.dto.MOVIE;
+import com.first.movie.dto.PAY;
+import com.first.movie.dto.THEATER;
+import com.first.movie.dto.TIMEMOVIE;
 
 @Service
 public class MVService {
@@ -29,15 +33,6 @@ public class MVService {
 
 	@Autowired
 	private HttpSession session;
-
-	@Autowired
-	private HttpServletRequest request;
-
-	@Autowired
-	private BCryptPasswordEncoder pwEnc;
-
-	@Autowired
-	private JavaMailSender mailSender;
 
 	public int crl() {
 
@@ -301,5 +296,271 @@ public class MVService {
 
 		return 0;
 	}
+	
+	public void movSeat(TIMEMOVIE timeMovie) {
+
+		TIMEMOVIE timMov = mvdao.tmSearch(timeMovie);
+		String seatList = timMov.getTimLeftList();
+		session.setAttribute("seatList", seatList);
+		int seatArr[] = new int[15];
+		char seatCol = 'A';
+		int charIndex = 0;
+		int index = 0;
+		for (int i = 0; i < seatList.length(); i++) {
+			if (seatList.charAt(i) == seatCol) {
+				charIndex = i;
+			} else if (seatList.charAt(i) == ' ') {
+				seatArr[index] = Integer.parseInt(seatList.substring(charIndex + 1, i));
+				index++;
+			} else if (seatList.charAt(i) == '.') {
+				session.setAttribute("seat" + seatCol, seatArr);
+				System.out.println("좌석 i : " + seatCol);
+				seatArr = new int[15];
+				seatCol++;
+				index = 0;
+			} else if (seatList.charAt(i) == '/') {
+				break;
+			} else {
+			}
+		}
+
+		LocalDateTime locTime = LocalDateTime.now();
+		LocalDateTime movTime1 = LocalDateTime.of(Integer.parseInt(timMov.getTimStartDate().substring(0, 4)),
+				Integer.parseInt(timMov.getTimStartDate().substring(5, 7)),
+				Integer.parseInt(timMov.getTimStartDate().substring(8, 10)),
+				Integer.parseInt(timMov.getTimStartTime1().substring(0, 2)),
+				Integer.parseInt(timMov.getTimStartTime1().substring(3, 5)));
+		LocalDateTime movTime2 = LocalDateTime.of(Integer.parseInt(timMov.getTimStartDate().substring(0, 4)),
+				Integer.parseInt(timMov.getTimStartDate().substring(5, 7)),
+				Integer.parseInt(timMov.getTimStartDate().substring(8, 10)),
+				Integer.parseInt(timMov.getTimStartTime2().substring(0, 2)),
+				Integer.parseInt(timMov.getTimStartTime2().substring(3, 5)));
+		LocalDateTime movTime3 = LocalDateTime.of(Integer.parseInt(timMov.getTimStartDate().substring(0, 4)),
+				Integer.parseInt(timMov.getTimStartDate().substring(5, 7)),
+				Integer.parseInt(timMov.getTimStartDate().substring(8, 10)),
+				Integer.parseInt(timMov.getTimStartTime3().substring(0, 2)),
+				Integer.parseInt(timMov.getTimStartTime3().substring(3, 5)));
+		LocalDateTime movTime4 = LocalDateTime.of(Integer.parseInt(timMov.getTimStartDate().substring(0, 4)),
+				Integer.parseInt(timMov.getTimStartDate().substring(5, 7)),
+				Integer.parseInt(timMov.getTimStartDate().substring(8, 10)),
+				Integer.parseInt(timMov.getTimStartTime4().substring(0, 2)),
+				Integer.parseInt(timMov.getTimStartTime4().substring(3, 5)));
+		LocalDateTime curTime = LocalDateTime.of(Integer.parseInt(timMov.getTimStartDate().substring(0, 4)),
+				Integer.parseInt(timMov.getTimStartDate().substring(5, 7)),
+				Integer.parseInt(timMov.getTimStartDate().substring(8, 10)),
+				Integer.parseInt(timMov.getTimCurTime().substring(0, 2)),
+				Integer.parseInt(timMov.getTimCurTime().substring(3, 5)));
+		if (locTime.isAfter(movTime1)) {
+			timMov.setTimStartTime1("");
+		}
+		if (locTime.isAfter(movTime2)) {
+			timMov.setTimStartTime2("");
+		}
+		if (locTime.isAfter(movTime3)) {
+			timMov.setTimStartTime3("");
+		}
+		if (locTime.isAfter(movTime4)) {
+			timMov.setTimStartTime4("");
+		}
+		Duration duration = Duration.between(locTime, curTime);
+		int dH = duration.toString().indexOf('H');
+		int dM = duration.toString().indexOf('M');
+		if (dH == -1) {
+			timMov.setTimMinsLeft(duration.toString().substring(2, dM) + "분");
+			if (dM == -1) {
+				timMov.setTimMinsLeft("0분");
+			}
+		} else if (dM == -1) {
+			timMov.setTimMinsLeft(duration.toString().substring(2, dH) + "시간");
+		} else {
+			timMov.setTimMinsLeft(
+					duration.toString().substring(2, dH) + "시간 " + duration.toString().substring(dH + 1, dM) + "분");
+		}
+		session.setAttribute("minsLeft", timMov.getTimMinsLeft());
+		session.setAttribute("timeMovie", timMov);
+
+	}
+
+
+	public String cpUpdate(String loginId, String level) {
+		
+		
+		String cpList = mvdao.cpView(loginId);
+		int st, end, cpNum;
+		String cpStr, cpStr2;
+		
+		System.out.println("(2)Service, cpList : " + cpList + "level : " + level);
+
+		if (level.equals("1")) {
+			st = cpList.indexOf("STD:");
+			end = cpList.indexOf("/");
+			cpNum = Integer.parseInt(cpList.substring(st + 4, end)) +1;
+			cpStr = cpList.substring(st, end);
+			cpStr2 = "STD:" + (cpNum);
+		} else if (level.equals("2")) {
+			st = cpList.indexOf("PRM:");
+			end = cpList.indexOf("_");
+			cpNum = Integer.parseInt(cpList.substring(st + 4, end)) +1;
+			cpStr = cpList.substring(st, end);
+			cpStr2 = "PRM:" + (cpNum);
+		} else if (level.equals("3")) {
+			st = cpList.indexOf("VIP:");
+			end = cpList.indexOf(",");
+			cpNum = Integer.parseInt(cpList.substring(st + 4, end))+1;
+			cpStr = cpList.substring(st, end);
+			cpStr2 = "VIP:" + (cpNum);
+		} else {
+			cpStr = " ";
+			cpStr2 = " ";
+		}
+		cpList = cpList.replace(cpStr, cpStr2);
+
+		COUPON coupon = new COUPON();
+		coupon.setLoginId(loginId);
+		coupon.setCouponList(cpList);
+		System.out.println("(2)Service, cpList2 : " + cpList);
+		
+		int result = mvdao.cpUpdate(coupon);
+		String rst = " ";
+
+		if (result > 0) {
+			rst = "OK";
+		} else {
+			rst = "NO";
+		}
+		
+		System.out.println("(5)Service, result : " + result + "rst : " + rst);
+		return rst;
+	}
+
+	public ArrayList<Integer> cpCheck(String loginId) {
+
+		System.out.println(session.getAttribute("loginId"));
+		
+		String cpList = mvdao.cpView(loginId);
+		System.out.println(session.getAttribute(cpList));
+		int st, end, cpNum;
+		ArrayList<Integer> cpArray = new ArrayList<>();
+		
+		st = cpList.indexOf("STD:");
+		end = cpList.indexOf("/");
+		cpNum = Integer.parseInt(cpList.substring(st + 4, end));
+		cpArray.add(cpNum);
+
+		st = cpList.indexOf("PRM:");
+		end = cpList.indexOf("_");
+		cpNum = Integer.parseInt(cpList.substring(st + 4, end));
+		cpArray.add(cpNum);
+
+		st = cpList.indexOf("VIP:");
+		end = cpList.indexOf(",");
+		cpNum = Integer.parseInt(cpList.substring(st + 4, end));
+		cpArray.add(cpNum);
+
+		return cpArray;
+	}
+
+	public PAY payPrint(TIMEMOVIE timMov) {
+		
+		List<TIMEMOVIE> picUrl = mvdao.getPoster(timMov);
+		System.out.println("picUrl " + picUrl);
+		
+		PAY pay = new PAY();
+		String loginId = session.getAttribute("loginId").toString();
+	    pay.setPayId(loginId);
+		String name = mvdao.nameOut(loginId);
+		pay.setPayName(name);
+		pay.setPayPic(picUrl.get(0).getTimPoster());
+		pay.setPayMovName(timMov.getTimMovName());
+		pay.setPayTheName(timMov.getTimTheName());
+		pay.setPayTheRoom(timMov.getTimTheRoom());
+		pay.setPayStartDate(timMov.getTimStartDate());
+		pay.setPayTimStart(timMov.getTimCurTime());
+		pay.setPaySeatNum(session.getAttribute("seatPay").toString());
+		pay.setPayMovPrice(timMov.getTimCost());
+		pay.setPayLeftList(session.getAttribute("seatList").toString());
+
+		System.out.println(pay);
+		return pay;
+	}
+
+	public String getPic(String movName) {
+		
+		int randNum = (int)((Math.random() * 6) +1);
+		String picUrl = mvdao.getPic(movName, randNum);
+		
+		return picUrl;
+	}
+
+	public void utm() {
+		// timemoviedb삭제
+		mvdao.deltm();
+		int rmnum=0;
+		List<MOVIE> movie = mvdao.getAllmovie();
+		List<THEATER> ater = mvdao.getAllater();
+		// theater의 크기만큼 for문
+		TIMEMOVIE tm = new TIMEMOVIE();
+		for (int i = 0; i < ater.size(); i++) {
+			//영화관 theroom 크기
+			int gtr =Integer.parseInt(ater.get(i).getTheRoom());
+			//theroom에서 1~3관은 랭킹3위까지 영화로 나머지 관들은 전체 영화 랜덤으로 입력
+					if(gtr>=3) {
+						for(int q=0;q<3;q++) {
+					tm.setTimMovName(movie.get(q).getMovName());
+					tm.setTimTheName(ater.get(i).getTheName());
+					tm.setTimTheCity(ater.get(i).getTheCity());
+					// tm.setTimStartDate();
+					// tm.setTimCurTime();
+					/*
+					 * tm.setTimStartTime1(); tm.setTimStartTime2(); tm.setTimStartTime3();
+					 * tm.setTimStartTime4(); tm.setTIMLEFTSEAT(); tm.setTIMLEFTLIST();
+					 */
+					tm.setTimBackPic(movie.get(q).getMovPicture1());
+					tm.setTimPoster(movie.get(q).getMovMainPicture());
+					tm.setTimTheRoom((q+1) + "관");
+						
+					tm.setTimCurTime("11:00");
+					mvdao.tmseting(tm);
+					tm.setTimCurTime("15:00");
+					mvdao.tmseting(tm);
+				
+					tm.setTimCurTime("20:00");
+					mvdao.tmseting(tm);
+					tm.setTimCurTime("22:00");
+					mvdao.tmseting(tm);} 
+						for(int w=3;w<gtr;w++) {
+							//영화번호 랜덤 뽑기
+							if(w>6) {
+							rmnum=0;	
+							}
+							else {
+							rmnum=(int)(Math.random()*movie.size());}
+							System.out.println(rmnum);
+							tm.setTimMovName(movie.get(rmnum).getMovName());
+							tm.setTimTheName(ater.get(i).getTheName());
+							tm.setTimTheCity(ater.get(i).getTheCity());
+							// tm.setTimStartDate();
+							// tm.setTimCurTime();
+							/*
+							 * tm.setTimStartTime1(); tm.setTimStartTime2(); tm.setTimStartTime3();
+							 * tm.setTimStartTime4(); tm.setTIMLEFTSEAT(); tm.setTIMLEFTLIST();
+							 */
+							tm.setTimBackPic(movie.get(rmnum).getMovPicture1());
+							tm.setTimPoster(movie.get(rmnum).getMovMainPicture());
+							tm.setTimTheRoom((w+1) + "관");
+							tm.setTimCurTime("20:00");
+							mvdao.tmseting(tm);
+							tm.setTimCurTime("22:00");
+							mvdao.tmseting(tm);
+						}
+				
+					
+					
+					} // for문 끝
+
+			}
+
+		}
+	
 
 }
