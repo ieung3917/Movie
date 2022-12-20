@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Movie">
+
+	<select id="moviedetails" parameterType="String" resultType="movie">
+		SELECT * FROM MOVIEM WHERE MOVNAME = #{movName}
+	</select>
+	
+	<select id="home1" resultType="movie">
+		SELECT * FROM MOVIEM WHERE MOVRANK &lt; = 3 ORDER BY MOVRANK ASC
+	</select>
+	
+	<select id="home2" resultType="movie">
+		SELECT * FROM MOVIEM WHERE MOVRANK &lt; = 3 ORDER BY MOVDATE DESC
+	</select>
+
+</mapper>

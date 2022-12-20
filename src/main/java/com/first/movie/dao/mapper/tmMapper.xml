@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- sql문을 작성해주는 곳 -->
+<mapper namespace="TimeMovie">
+	
+	<select id="movList" parameterType="String" resultType="timeMovie">
+		SELECT * FROM TIMEMOVIEM WHERE TIMMOVNAME = #{timMovName}
+	</select>
+	
+	<insert id="movData" parameterType="movie">
+		INSERT INTO MOVIEM VALUES (#{movName},#{movGenre},#{movStar},#{movAge},#{movDate},#{movDirector},#{movActor1},#{movActor2},#{movActor3},#{movActor4},#{movActorPic1},#{movActorPic2},#{movActorPic3},#{movActorPic4},#{movRank},#{movRunTime},#{movCountry}, #{movContext},#{movMainPicture},#{movPicture1},#{movPicture2},#{movPicture3},#{movPicture4},#{movPicture5},#{movPicture6},#{movTickets},#{movPeScore},#{movGeScore},#{movTeaserUrl})
+	</insert>
+
+	<delete id="movDel">
+		DELETE FROM MOVIEM
+	</delete>
+	
+	<select id="timBackPic" parameterType="String" resultType="String">
+		SELECT TIMBACKPIC FROM TIMEMOVIEM WHERE 
+	</select>
+	
+
+</mapper>
